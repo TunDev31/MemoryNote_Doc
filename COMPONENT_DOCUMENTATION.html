@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoryNote - Component Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 62.5%;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3.2rem;
+            color: #5D4037;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #D37426;
+            page-break-after: avoid;
+        }
+        h2 {
+            font-size: 2.4rem;
+            color: #6D4C41;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            page-break-after: avoid;
+        }
+        h3 {
+            font-size: 1.8rem;
+            color: #795548;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        h4 {
+            font-size: 1.4rem;
+            color: #A1887F;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        ul, ol {
+            font-size: 1.4rem;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            color: #d63384;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1.5rem;
+            border-left: 4px solid #D37426;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            page-break-inside: avoid;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .component-box {
+            background: #FFFCF7;
+            border: 2px solid #D7CCC8;
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            page-break-inside: avoid;
+        }
+        .component-title {
+            font-size: 1.8rem;
+            color: #5D4037;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #D37426;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 0.3rem;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .structure-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        .structure-table th,
+        .structure-table td {
+            border: 1px solid #D7CCC8;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        .structure-table th {
+            background: #6D4C41;
+            color: white;
+        }
+        .structure-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .flow-diagram {
+            background: #e8f4f8;
+            border: 2px dashed #5D4037;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 1.2rem;
+            white-space: pre-wrap;
+            page-break-inside: avoid;
+        }
+        .knowledge-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+            page-break-inside: avoid;
+        }
+        .toc {
+            background: #f0f0f0;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            page-break-inside: avoid;
+        }
+        .toc-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #5D4037;
+        }
+        .toc ol {
+            font-size: 1.3rem;
+        }
+        .page-break {
+            page-break-after: always;
+        }
+        @media print {
+            body { padding: 0.5rem; }
+            .component-box { page-break-inside: avoid; }
+            h1 { page-break-before: always; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- COVER PAGE -->
+<div style="text-align: center; margin: 5rem 0; page-break-after: always;">
+    <h1 style="border: none; margin: 2rem 0; font-size: 4rem;">📝 MemoryNote</h1>
+    <h2 style="color: #795548; margin-bottom: 3rem;">Component & Architecture Documentation</h2>
+    <p style="font-size: 1.6rem; color: #666; margin-bottom: 1rem;">Tài liệu chi tiết về cấu trúc component, HTML, CSS, JavaScript</p>
+    <p style="font-size: 1.3rem; color: #999;">Ngày: 3 tháng 12 năm 2025</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <div class="toc-title">📑 Mục Lục</div>
+    <ol>
+        <li>Giới Thiệu & Tổng Quan Kiến Trúc</li>
+        <li>Component 1: Navigation Bar</li>
+        <li>Component 2: Sidebar</li>
+        <li>Component 3: Login / Signup Form</li>
+        <li>Component 4: Home Page</li>
+        <li>Component 5: To-Do List</li>
+        <li>Component 6: Calendar (Lịch Hẹn)</li>
+        <li>Component 7: Modal Dialog</li>
+        <li>Quản Lý State & LocalStorage</li>
+        <li>Event Listeners & User Interactions</li>
+        <li>Kiến Thức Cần Có Để Build Web</li>
+        <li>Responsive Design & Mobile Optimization</li>
+    </ol>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 1: INTRODUCTION -->
+<h1>1. Giới Thiệu & Tổng Quan Kiến Trúc</h1>
+
+<h2>🏗️ Kiến Trúc Ứng Dụng</h2>
+<p><strong>MemoryNote</strong> là ứng dụng web quản lý công việc + lịch hẹn + ghi chú, được xây dựng bằng <strong>HTML thuần, CSS, JavaScript</strong>. Cấu trúc tuân theo mô hình:</p>
+
+<div class="flow-diagram">
+┌─────────────────────────────────────────────────┐
+│          HTML (Markup / Structure)              │
+│  - NavBar, Sidebar, Pages, Forms, Modals       │
+└───────────────────┬─────────────────────────────┘
+                    │
+        ┌───────────┴───────────┐
+        │                       │
+        ▼                       ▼
+┌──────────────────┐   ┌──────────────────┐
+│  CSS (Styling)   │   │ JS (Behavior)    │
+│ - Responsive     │   │ - Event Listeners│
+│ - Layout (Grid)  │   │ - State Manage   │
+│ - Components     │   │ - DOM Rendering  │
+└──────────────────┘   └──────────────────┘
+        │                       │
+        └───────────┬───────────┘
+                    │
+        ┌───────────▼───────────┐
+        │    LocalStorage       │
+        │ (Persist User Data)   │
+        └───────────────────────┘
+</div>
+
+<h2>📂 Cấu Trúc Thư Mục</h2>
+<pre>
+DEMO1 - Copy/
+├── index.html          # Cấu trúc HTML chính
+├── index.css           # Toàn bộ styling (1973 dòng, responsive)
+├── index.js            # Logic ứng dụng (899 dòng)
+├── Image/              # Ảnh assets (logo, avatar)
+└── pages/              # Các trang con (nếu có)
+</pre>
+
+<h2>🔄 Data Flow (Luồng Dữ Liệu)</h2>
+<div class="flow-diagram">
+1. Người dùng tương tác (click, input, form submit)
+   │
+   ▼
+2. Event Listener ghi nhận sự kiện
+   │
+   ▼
+3. JavaScript xử lý logic (validate, update state)
+   │
+   ▼
+4. Lưu dữ liệu vào LocalStorage
+   │
+   ▼
+5. Re-render UI (vẽ lại DOM)
+   │
+   ▼
+6. CSS áp dụng styling (responsive)
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 2: NAVBAR -->
+<h1>2. Component: Navigation Bar</h1>
+
+<div class="component-box">
+    <div class="component-title">🔝 Navigation Bar</div>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">Fixed Position</span>
+</div>
+
+<h2>HTML Cấu Trúc</h2>
+<pre>&lt;nav class="navBar"&gt;
+    &lt;div class="HomeAndLogoWrapper"&gt;
+        &lt;div class="LogoWrapper"&gt;
+            &lt;img src="Image/images.png" alt=""&gt;
+            &lt;p&gt;MemoryNote&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;p id="Home"&gt;Home&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="loginWrapper"&gt;
+        &lt;button id="loginBtn"&gt;Đăng Nhập&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</pre>
+
+<h2>CSS Styling</h2>
+<pre>.navBar {
+    background: #5D4037;
+    height: 5rem;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}</pre>
+
+<h2>JavaScript Tương Tác</h2>
+<table class="structure-table">
+    <tr>
+        <th>Element ID/Class</th>
+        <th>Sự Kiện</th>
+        <th>Hàm Xử Lý</th>
+        <th>Tác Dụng</th>
+    </tr>
+    <tr>
+        <td>#loginBtn</td>
+        <td>click</td>
+        <td>showLoginPages()</td>
+        <td>Mở trang login</td>
+    </tr>
+    <tr>
+        <td>#Home</td>
+        <td>click</td>
+        <td>showHomePage()</td>
+        <td>Quay về trang chủ</td>
+    </tr>
+    <tr>
+        <td>.LogoWrapper</td>
+        <td>click</td>
+        <td>showHomePage()</td>
+        <td>Quay về trang chủ</td>
+    </tr>
+    <tr>
+        <td>.loginWrapper</td>
+        <td>-</td>
+        <td>renderAuthUI()</td>
+        <td>Cập nhật khi đăng nhập/xuất</td>
+    </tr>
+</table>
+
+<h2>🔑 Chức Năng Chính</h2>
+<ul>
+    <li><strong>Logo & Brand:</strong> Hiển thị tên ứng dụng và icon</li>
+    <li><strong>Navigation:</strong> Nút "Home" quay về trang chủ</li>
+    <li><strong>Authentication Display:</strong> Thay đổi giữa nút "Đăng Nhập" (logout) và Avatar (logged in)</li>
+    <li><strong>Responsive:</strong> Shrink trên mobile, hide "Home" text trên rất nhỏ</li>
+</ul>
+
+<div class="knowledge-box">
+💡 <strong>Kiến Thức:</strong> position: fixed giữ navbar dính ở trên cùng. z-index: 100 đảm bảo nó hiển thị trên cùng. CSS Media Queries điều chỉnh kích thước trên mobile.
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 3: SIDEBAR -->
+<h1>3. Component: Sidebar</h1>
+
+<div class="component-box">
+    <div class="component-title">📌 Sidebar Navigation</div>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">Fixed Position</span>
+    <span class="tag">Responsive</span>
+</div>
+
+<h2>HTML Cấu Trúc</h2>
+<pre>&lt;div class="sideBar"&gt;
+    &lt;div class="sidebarItems" data-target="todo"&gt;
+        &lt;i class="fas fa-tasks"&gt;&lt;/i&gt;
+        &lt;p&gt;To Do List&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="sidebarItems" data-target="lichhen"&gt;
+        &lt;i class="fas fa-calendar-alt"&gt;&lt;/i&gt;
+        &lt;p&gt;Lịch hẹn&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>CSS Styling (Desktop)</h2>
+<pre>.sideBar {
+    background-color: #6D4C41;
+    width: 19rem;
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    height: 100vh;
+    flex-direction: column;
+    z-index: 99;
+}
+
+.sidebarItems {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.sidebarItems:hover {
+    background-color: #FFECB3;
+    border-radius: 0.5rem;
+}</pre>
+
+<h2>CSS Responsive (Mobile)</h2>
+<pre>@media (max-width: 768px) {
+    .sideBar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;  /* Ngang thay vì dọc */
+        top: 4rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebarItems {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebarItems p {
+        display: none;  /* Ẩn text, chỉ hiển thị icon */
+    }
+}</pre>
+
+<h2>JavaScript Logic</h2>
+<pre>// Bắt sự kiện click trên sidebar items
+sidebarItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        const target = e.currentTarget.getAttribute('data-target');
+        
+        if (target === 'todo') {
+            showToDoPage(e);
+        } else if (target === 'lichhen') {
+            showCalendarPage(e);
+        }
+    });
+});</pre>
+
+<h2>📊 Navigation Targets</h2>
+<table class="structure-table">
+    <tr>
+        <th>data-target</th>
+        <th>Tên Hiển Thị</th>
+        <th>Hàm Xử Lý</th>
+        <th>Điều Kiện</th>
+    </tr>
+    <tr>
+        <td>todo</td>
+        <td>To Do List</td>
+        <td>showToDoPage()</td>
+        <td>Phải đã login</td>
+    </tr>
+    <tr>
+        <td>lichhen</td>
+        <td>Lịch hẹn</td>
+        <td>showCalendarPage()</td>
+        <td>Phải đã login</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- SECTION 4: LOGIN/SIGNUP -->
+<h1>4. Component: Login & Signup Form</h1>
+
+<div class="component-box">
+    <div class="component-title">🔐 Authentication Forms</div>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">Form Validation</span>
+    <span class="tag">Overlay</span>
+</div>
+
+<h2>HTML Cấu Trúc (Login)</h2>
+<pre>&lt;div id="LoginPageWrapper"&gt;
+    &lt;div class="login-form-container"&gt;
+        &lt;h2&gt;Đăng Nhập&lt;/h2&gt;
+        &lt;form id="loginForm"&gt;
+            &lt;div class="input-group"&gt;
+                &lt;label for="username"&gt;Tên người dùng:&lt;/label&gt;
+                &lt;input type="text" id="username" required&gt;
+            &lt;/div&gt;
+            &lt;div class="input-group"&gt;
+                &lt;label for="password"&gt;Mật khẩu:&lt;/label&gt;
+                &lt;input type="password" id="password" required&gt;
+            &lt;/div&gt;
+            &lt;button type="submit"&gt;Đăng Nhập&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;p class="signup-link"&gt;Chưa có tài khoản? 
+            &lt;a href="#" id="showSignupLink"&gt;Đăng Ký&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>CSS: Position & Overlay</h2>
+<pre>#LoginPageWrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;  /* Cao hơn navbar & sidebar */
+    background-color: rgba(255, 255, 255, 0.98);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}</pre>
+
+<h2>JavaScript: Form Validation & Login</h2>
+<pre>function handleLogin(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    // Kiểm tra tài khoản (giả lập)
+    const isValid = (username === 'baophuc1612' && password === '161206') ||
+                    (username === 'user' && password === 'pass');
+    
+    if (isValid) {
+        isLoggedIn = true;
+        saveLoginStateToStorage();
+        renderAuthUI();
+        showHomePage();
+        alert('Đăng nhập thành công!');
+    } else {
+        alert('Tên người dùng hoặc mật khẩu không đúng!');
+    }
+}</pre>
+
+<h2>Validation Rules (Signup)</h2>
+<table class="structure-table">
+    <tr>
+        <th>Field</th>
+        <th>Rule</th>
+        <th>Thông Báo Lỗi</th>
+    </tr>
+    <tr>
+        <td>Username</td>
+        <td>≥ 3 ký tự</td>
+        <td>Tên người dùng phải có ít nhất 3 ký tự</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>Có @ và domain</td>
+        <td>Email không hợp lệ</td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>≥ 6 ký tự</td>
+        <td>Mật khẩu phải có ít nhất 6 ký tự</td>
+    </tr>
+    <tr>
+        <td>Confirm Password</td>
+        <td>= Password</td>
+        <td>Mật khẩu không khớp</td>
+    </tr>
+</table>
+
+<div class="knowledge-box">
+💡 <strong>Kiến Thức:</strong> Position fixed + z-index cao tạo overlay effect. Form validation ngăn user submit dữ liệu không hợp lệ. State (isLoggedIn) kiểm soát việc hiển thị trang.
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 5: TO-DO LIST -->
+<h1>5. Component: To-Do List</h1>
+
+<div class="component-box">
+    <div class="component-title">✅ To-Do List Management</div>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">CRUD</span>
+    <span class="tag">Filter & Search</span>
+    <span class="tag">LocalStorage</span>
+</div>
+
+<h2>HTML Cấu Trúc</h2>
+<pre>&lt;div id="ToDoListWrapper"&gt;
+    &lt;h1&gt;To Do List&lt;/h1&gt;
+    
+    &lt;!-- Search & Add --&gt;
+    &lt;input type="text" id="todo-search" placeholder="Tìm kiếm..."&gt;
+    &lt;button id="add-new-todo-button"&gt;+ Thêm Công Việc&lt;/button&gt;
+    
+    &lt;!-- Filters --&gt;
+    &lt;div class="todo-filter-buttons"&gt;
+        &lt;button class="filter-btn active-filter" data-filter="all"&gt;Tất Cả&lt;/button&gt;
+        &lt;button class="filter-btn" data-filter="completed"&gt;Hoàn Thành&lt;/button&gt;
+        &lt;button class="filter-btn" data-filter="pending"&gt;Chưa Làm&lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Task List --&gt;
+    &lt;div id="todo-list-container"&gt;
+        &lt;!-- Tasks rendered here --&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Summary Stats --&gt;
+    &lt;div class="todo-summary"&gt;
+        &lt;p&gt;Tổng: &lt;span id="total-tasks"&gt;0&lt;/span&gt;&lt;/p&gt;
+        &lt;p&gt;Hoàn Thành: &lt;span id="completed-tasks"&gt;0&lt;/span&gt;&lt;/p&gt;
+        &lt;p&gt;Chưa Làm: &lt;span id="pending-tasks"&gt;0&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>Task Data Structure (JSON)</h2>
+<pre>// Một task trong localStorage
+{
+    id: 1,
+    text: "Hoàn thành project MemoryNote",
+    completed: false,
+    date: "Hôm nay",
+    color: "#FFECB3"
+}</pre>
+
+<h2>JavaScript: CRUD Operations</h2>
+
+<h3>1. Create (Thêm công việc)</h3>
+<pre>function handleAddTodo(e) {
+    e.preventDefault();
+    
+    const text = document.getElementById('todoText').value.trim();
+    const date = document.getElementById('todoDate').value.trim();
+    const color = document.getElementById('todoColor').value;
+    
+    if (!text || !date) {
+        alert('Điền đầy đủ tên công việc và ngày!');
+        return;
+    }
+    
+    const newTask = {
+        id: tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1,
+        text, completed: false, date, color
+    };
+    
+    tasks.push(newTask);
+    saveTasksToStorage();
+    renderTodoList();
+}</pre>
+
+<h3>2. Read (Hiển thị & Filter)</h3>
+<pre>function renderTodoList() {
+    const searchTerm = todoSearchInput.value.toLowerCase();
+    
+    // Lọc theo status & search term
+    const filtered = tasks.filter(task => {
+        const statusMatch = currentFilter === 'all' || 
+            (currentFilter === 'completed' && task.completed) ||
+            (currentFilter === 'pending' && !task.completed);
+        const searchMatch = task.text.toLowerCase().includes(searchTerm);
+        return statusMatch && searchMatch;
+    });
+    
+    // Vẽ lại DOM
+    todoListContainer.innerHTML = filtered.map(createTodoItemHTML).join('');
+    updateSummary();
+}</pre>
+
+<h3>3. Update (Cập nhật trạng thái)</h3>
+<pre>function handleCheckboxChange(e) {
+    const id = parseInt(e.target.getAttribute('data-id'));
+    const task = tasks.find(t => t.id === id);
+    if (task) {
+        task.completed = e.target.checked;
+        saveTasksToStorage();
+        renderTodoList();
+    }
+}</pre>
+
+<h3>4. Delete (Xóa công việc)</h3>
+<pre>function handleDeleteTodo(id) {
+    const confirmed = confirm('Chắc chắn xóa?');
+    if (confirmed) {
+        tasks = tasks.filter(task => task.id !== id);
+        saveTasksToStorage();
+        renderTodoList();
+    }
+}</pre>
+
+<h2>🔄 Filter Logic</h2>
+<div class="flow-diagram">
+User clicks filter button
+    │
+    ▼
+currentFilter = "completed" / "pending" / "all"
+    │
+    ▼
+renderTodoList() re-renders based on filter
+    │
+    ▼
+Active button highlighted with class "active-filter"
+</div>
+
+<div class="knowledge-box">
+💡 <strong>Kiến Thức:</strong> Array.filter() + array.map() là cơ bản. Event delegation cho checkbox. LocalStorage persist data. DOM innerHTML re-render. Array.find() tìm task theo ID.
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 6: CALENDAR -->
+<h1>6. Component: Calendar (Lịch Hẹn)</h1>
+
+<div class="component-box">
+    <div class="component-title">📅 Calendar with Events</div>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">Date Management</span>
+    <span class="tag">Event Scheduling</span>
+</div>
+
+<h2>HTML Cấu Trúc</h2>
+<pre>&lt;div id="CalendarWrapper"&gt;
+    &lt;div class="calendar-container"&gt;
+        &lt;div class="calendar-main"&gt;
+            &lt;div class="month-navigation"&gt;
+                &lt;button id="prevMonthBtn"&gt;&lt; Tháng Trước&lt;/button&gt;
+                &lt;span id="currentMonth"&gt;Tháng 12 - 2025&lt;/span&gt;
+                &lt;button id="nextMonthBtn"&gt;Tháng Sau &gt;&lt;/button&gt;
+            &lt;/div&gt;
+            
+            &lt;div id="calendarGrid"&gt;
+                &lt;!-- Calendar cells rendered here --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="events-sidebar"&gt;
+            &lt;h3&gt;Sự Kiện&lt;/h3&gt;
+            &lt;div id="eventsList"&gt;
+                &lt;!-- Events listed here --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>Event Data Structure</h2>
+<pre>// Một sự kiện trong localStorage
+{
+    id: 1,
+    date: "2025-12-03",
+    title: "Họp dự án",
+    time: "14:00",
+    description: "Họp với team để review progress"
+}</pre>
+
+<h2>JavaScript: Calendar Rendering</h2>
+<pre>function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Update header
+    currentMonthSpan.textContent = formatMonthYear(currentDate);
+    
+    // Get first day & days in month
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    
+    calendarGrid.innerHTML = '';
+    
+    // Vẽ ngày tháng trước (không clickable)
+    // Vẽ ngày tháng hiện tại (có event)
+    // Vẽ ngày tháng sau (không clickable)
+    
+    // Highlight ngày hôm nay
+    if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+        dayCell.classList.add('today');
+    }
+}</pre>
+
+<h2>Event Management</h2>
+<table class="structure-table">
+    <tr>
+        <th>Operation</th>
+        <th>Function</th>
+        <th>Trigger</th>
+    </tr>
+    <tr>
+        <td>Add Event</td>
+        <td>handleAddEvent()</td>
+        <td>Form submit</td>
+    </tr>
+    <tr>
+        <td>Delete Event</td>
+        <td>handleDeleteEvent(id)</td>
+        <td>Trash icon click</td>
+    </tr>
+    <tr>
+        <td>View Events</td>
+        <td>renderEventsList()</td>
+        <td>Date cell click</td>
+    </tr>
+    <tr>
+        <td>Search Events</td>
+        <td>renderEventsList()</td>
+        <td>Input change</td>
+    </tr>
+</table>
+
+<h2>Date Formatting Helper Functions</h2>
+<pre>// Format date to YYYY-MM-DD
+function formatDateToString(year, month, day) {
+    return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
+// Format month-year display
+function formatMonthYear(date) {
+    const months = ['Tháng 1', 'Tháng 2', ..., 'Tháng 12'];
+    return `${months[date.getMonth()]} - ${date.getFullYear()}`;
+}
+
+// Get events for specific date
+function getEventsForDate(dateString) {
+    return events.filter(event => event.date === dateString);
+}</pre>
+
+<div class="page-break"></div>
+
+<!-- SECTION 7: MODAL -->
+<h1>7. Component: Modal Dialog</h1>
+
+<div class="component-box">
+    <div class="component-title">🔲 Modal Dialogs</div>
+    <span class="tag">HTML</span>
+    <span class="tag">CSS</span>
+    <span class="tag">Overlay</span>
+    <span class="tag">Form Input</span>
+</div>
+
+<h2>HTML Cấu Trúc (Add To-Do Modal)</h2>
+<pre>&lt;div id="addTodoModal" class="modal hidden"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;h2&gt;Thêm Công Việc&lt;/h2&gt;
+            &lt;button class="modal-close" id="closeModalBtn"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;form id="addTodoForm"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="todoText"&gt;Nội Dung&lt;/label&gt;
+                &lt;input type="text" id="todoText" required&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="todoDate"&gt;Ngày Hạn&lt;/label&gt;
+                &lt;input type="text" id="todoDate" required&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="todoColor"&gt;Màu&lt;/label&gt;
+                &lt;input type="color" id="todoColor"&gt;
+            &lt;/div&gt;
+            &lt;button type="submit" class="modal-submit-btn"&gt;Thêm&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+<h2>CSS: Modal Overlay</h2>
+<pre>.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;  /* Cao nhất */
+}
+
+.modal-content {
+    background: white;
+    border-radius: 1rem;
+    padding: 0;
+    width: 90%;
+    max-width: 50rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}</pre>
+
+<h2>JavaScript: Modal Control</h2>
+<pre>function openAddTodoModal() {
+    const modal = document.getElementById('addTodoModal');
+    modal.classList.remove('hidden');  // Show
+}
+
+function closeAddTodoModal() {
+    const modal = document.getElementById('addTodoModal');
+    modal.classList.add('hidden');     // Hide
+}</pre>
+
+<h2>Modal Stack (Z-Index Order)</h2>
+<div class="flow-diagram">
+Modal Overlay      z-index: 300  ← Highest
+  ├─ Form Content
+  ├─ Close Button
+  └─ Submit Button
+       │
+       ▼
+Login/Signup       z-index: 200
+       │
+       ▼
+NavBar             z-index: 100
+       │
+       ▼
+Sidebar            z-index: 99
+       │
+       ▼
+Main Content       z-index: 0 (default)
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 8: STATE MANAGEMENT -->
+<h1>8. State Management & LocalStorage</h1>
+
+<h2>Global State Variables</h2>
+<pre>// Authentication
+let isLoggedIn = false;
+
+// Data
+let tasks = [];
+let events = [];
+
+// UI State
+let currentDate = new Date();
+let selectedEventDate = null;
+let currentFilter = 'all';</pre>
+
+<h2>LocalStorage Keys</h2>
+<table class="structure-table">
+    <tr>
+        <th>Key</th>
+        <th>Purpose</th>
+        <th>Data Type</th>
+    </tr>
+    <tr>
+        <td>memorynote_tasks</td>
+        <td>Lưu danh sách công việc</td>
+        <td>JSON Array</td>
+    </tr>
+    <tr>
+        <td>memorynote_events</td>
+        <td>Lưu danh sách sự kiện</td>
+        <td>JSON Array</td>
+    </tr>
+    <tr>
+        <td>memorynote_login_state</td>
+        <td>Trạng thái đăng nhập</td>
+        <td>Boolean</td>
+    </tr>
+</table>
+
+<h2>Save/Load Functions</h2>
+<pre>// Save
+function saveTasksToStorage() {
+    try {
+        localStorage.setItem('memorynote_tasks', JSON.stringify(tasks));
+    } catch (e) {
+        console.error('Lỗi lưu:', e);
+    }
+}
+
+// Load
+function loadTasksFromStorage() {
+    try {
+        const data = localStorage.getItem('memorynote_tasks');
+        if (data) {
+            tasks = JSON.parse(data);
+        }
+    } catch (e) {
+        console.error('Lỗi tải:', e);
+        tasks = [];
+    }
+}</pre>
+
+<h2>🔄 Data Persistence Flow</h2>
+<div class="flow-diagram">
+User adds task
+    │
+    ▼
+tasks array updated
+    │
+    ▼
+saveTasksToStorage()
+    │
+    ▼
+JSON.stringify(tasks)
+    │
+    ▼
+localStorage.setItem()
+    │
+    ▼
+───────────────────────────────
+Page refresh
+    │
+    ▼
+DOMContentLoaded
+    │
+    ▼
+loadTasksFromStorage()
+    │
+    ▼
+localStorage.getItem()
+    │
+    ▼
+JSON.parse()
+    │
+    ▼
+tasks array populated
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 9: EVENT LISTENERS -->
+<h1>9. Event Listeners & User Interactions</h1>
+
+<h2>Event Listener Categories</h2>
+
+<h3>1. Authentication Events</h3>
+<pre>// Login Form Submit
+document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+// Signup Form Submit
+document.getElementById('signupForm').addEventListener('submit', handleSignup);
+
+// Navigation Links
+document.getElementById('showSignupLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    showSignupPage();
+});
+
+document.getElementById('showLoginLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    showLoginPages();
+});</pre>
+
+<h3>2. Navigation Events</h3>
+<pre>// Logo Click
+logoWrapper.addEventListener('click', showHomePage);
+
+// Home Text Click
+homeNav.addEventListener('click', showHomePage);
+
+// Sidebar Items
+sidebarItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        const target = e.currentTarget.getAttribute('data-target');
+        if (target === 'todo') showToDoPage(e);
+        else if (target === 'lichhen') showCalendarPage(e);
+    });
+});</pre>
+
+<h3>3. To-Do List Events</h3>
+<pre>// Add Button
+addNewTodoButton.addEventListener('click', openAddTodoModal);
+
+// Filter Buttons
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', handleFilterClick);
+});
+
+// Search Input
+todoSearchInput.addEventListener('input', renderTodoList);
+
+// Form Submit
+document.getElementById('addTodoForm').addEventListener('submit', handleAddTodo);
+
+// Checkbox Change (Dynamic)
+document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', handleCheckboxChange);
+});</pre>
+
+<h3>4. Calendar Events</h3>
+<pre>// Month Navigation
+prevMonthBtn.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar();
+});
+
+nextMonthBtn.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar();
+});
+
+// Add Event Modal
+addEventBtn.addEventListener('click', openAddEventModal);
+
+// Form Submit
+document.getElementById('addEventForm').addEventListener('submit', handleAddEvent);
+
+// Event Search
+eventSearchInput.addEventListener('input', renderEventsList);</pre>
+
+<h2>Dynamic Event Binding</h2>
+<pre>// Problem: New task items created dynamically won't have event listeners
+// Solution: Attach listeners after DOM update
+
+function attachEventListenersToTasks() {
+    // Checkbox listeners
+    document.querySelectorAll('.todo-item input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', handleCheckboxChange);
+    });
+    
+    // Delete button listeners
+    document.querySelectorAll('.delete-todo-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = parseInt(btn.getAttribute('data-id'));
+            handleDeleteTodo(id);
+        });
+    });
+}</pre>
+
+<div class="page-break"></div>
+
+<!-- SECTION 10: REQUIRED KNOWLEDGE -->
+<h1>10. Kiến Thức Cần Có Để Build Web</h1>
+
+<h2>📚 Frontend Stack</h2>
+
+<h3>1. HTML (Markup)</h3>
+<ul>
+    <li><strong>Semantic HTML5:</strong> &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;</li>
+    <li><strong>Forms:</strong> &lt;input&gt;, &lt;button&gt;, &lt;form&gt;, validation attributes</li>
+    <li><strong>Data Attributes:</strong> data-* attributes cho DOM querying & state management</li>
+    <li><strong>Accessibility:</strong> label, id associations, alt text</li>
+    <li><strong>Meta Tags:</strong> charset, viewport, responsive design</li>
+</ul>
+
+<h3>2. CSS (Styling & Layout)</h3>
+<ul>
+    <li><strong>Box Model:</strong> margin, padding, border, box-sizing</li>
+    <li><strong>Positioning:</strong> static, relative, absolute, fixed, sticky</li>
+    <li><strong>Display:</strong> block, inline, inline-block, flex, grid</li>
+    <li><strong>Flexbox:</strong> justify-content, align-items, flex-direction</li>
+    <li><strong>CSS Grid:</strong> grid-template-columns, grid-template-rows, grid-area</li>
+    <li><strong>Media Queries:</strong> Responsive design (breakpoints: 480px, 768px, 1024px)</li>
+    <li><strong>Pseudo-classes:</strong> :hover, :focus, :active, :nth-child()</li>
+    <li><strong>Transitions & Animations:</strong> Smooth interactions</li>
+    <li><strong>Z-Index & Stacking:</strong> Layer management (navbar, sidebar, modal)</li>
+</ul>
+
+<h3>3. JavaScript (Behavior & Logic)</h3>
+<ul>
+    <li><strong>DOM Manipulation:</strong>
+        <ul>
+            <li>querySelector(), getElementById(), querySelectorAll()</li>
+            <li>innerHTML, textContent, classList</li>
+            <li>createElement(), appendChild(), removeChild()</li>
+        </ul>
+    </li>
+    <li><strong>Events:</strong>
+        <ul>
+            <li>addEventListener(), removeEventListener()</li>
+            <li>Event delegation (event bubbling)</li>
+            <li>preventDefault(), stopPropagation()</li>
+        </ul>
+    </li>
+    <li><strong>Array Methods:</strong>
+        <ul>
+            <li>filter(), map(), find(), forEach()</li>
+            <li>push(), pop(), splice()</li>
+            <li>sort(), includes()</li>
+        </ul>
+    </li>
+    <li><strong>String Methods:</strong>
+        <ul>
+            <li>trim(), toLowerCase(), includes()</li>
+            <li>split(), slice(), substring()</li>
+        </ul>
+    </li>
+    <li><strong>Object & JSON:</strong>
+        <ul>
+            <li>Object creation & manipulation</li>
+            <li>JSON.stringify(), JSON.parse()</li>
+        </ul>
+    </li>
+    <li><strong>Control Flow:</strong>
+        <ul>
+            <li>if/else, switch, loops (for, forEach, while)</li>
+            <li>try/catch error handling</li>
+        </ul>
+    </li>
+    <li><strong>Functions:</strong>
+        <ul>
+            <li>Function declaration & expression</li>
+            <li>Parameters, return values</li>
+            <li>Scope & closures</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>💾 Storage & Data</h2>
+<ul>
+    <li><strong>LocalStorage API:</strong> Persistent client-side storage</li>
+    <li><strong>JSON Format:</strong> Data serialization & deserialization</li>
+    <li><strong>Data Structure Design:</strong> How to organize objects & arrays</li>
+</ul>
+
+<h2>🎨 Design Patterns & Best Practices</h2>
+<ul>
+    <li><strong>MVC-like Pattern:</strong> Separate HTML (View), CSS (Style), JS (Controller/Logic)</li>
+    <li><strong>Component-based Thinking:</strong> NavBar, Sidebar, Forms as reusable units</li>
+    <li><strong>State Management:</strong> Track application state (login, filter, current page)</li>
+    <li><strong>Event Delegation:</strong> Attach listeners to parent, handle dynamically added elements</li>
+    <li><strong>DRY (Don't Repeat Yourself):</strong> Reuse functions, avoid hardcoding</li>
+    <li><strong>Responsive Design:</strong> Mobile-first or desktop-first approach</li>
+</ul>
+
+<h2>🔧 Developer Tools</h2>
+<ul>
+    <li><strong>Browser DevTools:</strong> Chrome/Edge/Firefox Developer Tools
+        <ul>
+            <li>Elements/Inspector: View & edit HTML/CSS live</li>
+            <li>Console: Debug JavaScript, run code</li>
+            <li>Network: Monitor requests</li>
+            <li>Application: View LocalStorage</li>
+        </ul>
+    </li>
+    <li><strong>Version Control:</strong> Git, GitHub (commit, push, pull)</li>
+    <li><strong>Code Editor:</strong> VS Code, Sublime, WebStorm</li>
+</ul>
+
+<h2>📊 Learning Path</h2>
+<div class="flow-diagram">
+1. HTML Basics
+   ├─ Semantic tags
+   ├─ Forms & Input
+   └─ Accessibility
+       │
+2. CSS Fundamentals
+   ├─ Box Model & Positioning
+   ├─ Flexbox & Grid
+   └─ Media Queries (Responsive)
+       │
+3. JavaScript Core
+   ├─ Variables & Data Types
+   ├─ Functions & Scope
+   ├─ Array/String Methods
+   └─ DOM Manipulation
+       │
+4. Advanced Topics
+   ├─ Event Handling
+   ├─ LocalStorage
+   ├─ Async (Promises, async/await)
+   └─ ES6+ Features
+       │
+5. Project Building
+   ├─ Plan Architecture
+   ├─ Build Components
+   ├─ Test & Debug
+   └─ Deploy
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 11: RESPONSIVE DESIGN -->
+<h1>11. Responsive Design & Mobile Optimization</h1>
+
+<h2>📱 Breakpoints Strategy</h2>
+<table class="structure-table">
+    <tr>
+        <th>Device</th>
+        <th>Breakpoint</th>
+        <th>Examples</th>
+        <th>Layout Changes</th>
+    </tr>
+    <tr>
+        <td>Desktop</td>
+        <td>1025px+</td>
+        <td>1920px, 1366px</td>
+        <td>Full layout, sidebar vertical</td>
+    </tr>
+    <tr>
+        <td>Tablet</td>
+        <td>769px - 1024px</td>
+        <td>iPad, 1024px</td>
+        <td>Reduced sidebar (16rem), adjusted padding</td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td>481px - 768px</td>
+        <td>iPhone 12, 768px</td>
+        <td>Sidebar horizontal, full-width content</td>
+    </tr>
+    <tr>
+        <td>Small Mobile</td>
+        <td>≤480px</td>
+        <td>iPhone SE, 360px</td>
+        <td>Icon-only sidebar, minimal padding, stacked</td>
+    </tr>
+</table>
+
+<h2>Mobile-First CSS Approach</h2>
+<pre>/* Start with mobile styles (smallest) */
+.component {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Tablet - enhance */
+@media (min-width: 768px) {
+    .component {
+        font-size: 1.4rem;
+        width: 50%;
+        padding: 1.5rem;
+    }
+}
+
+/* Desktop - full feature */
+@media (min-width: 1025px) {
+    .component {
+        font-size: 1.6rem;
+        width: auto;
+        padding: 2rem;
+    }
+}</pre>
+
+<h2>Key Responsive Techniques in MemoryNote</h2>
+
+<h3>1. Flexible Navbar</h3>
+<pre>/* Desktop */
+.navBar { padding: 0 4rem; height: 5rem; }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navBar { padding: 0 1.5rem; height: 4rem; }
+}
+
+@media (max-width: 480px) {
+    .navBar { padding: 0 1rem; height: 3.5rem; }
+}
+</pre>
+
+<h3>2. Sidebar Transformation</h3>
+<pre>/* Desktop: Vertical sidebar */
+.sideBar {
+    width: 19rem;
+    height: calc(100vh - 5rem);
+    flex-direction: column;
+}
+
+/* Mobile: Horizontal sidebar */
+@media (max-width: 768px) {
+    .sideBar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Very small mobile: Icon only */
+@media (max-width: 480px) {
+    .sidebarItems p { display: none; }
+}
+</pre>
+
+<h3>3. Content Area Adjustment</h3>
+<pre>/* Desktop: Navbar + Sidebar + Content */
+main {
+    margin-top: 5rem;
+    margin-left: 19rem;
+}
+
+/* Mobile: Full width, sidebar on top */
+@media (max-width: 768px) {
+    main {
+        margin-top: calc(4rem + auto-height-sidebar);
+        margin-left: 0;
+    }
+}
+</pre>
+
+<h2>Testing Responsive Design</h2>
+<p><strong>Chrome DevTools:</strong> Press F12 → Click device toggle → Select device (iPhone 12, iPad, etc.)</p>
+<p><strong>Manual Testing:</strong> Resize browser window gradually, check at each breakpoint</p>
+<p><strong>Cross-Browser:</strong> Test on Chrome, Edge, Firefox, Safari</p>
+
+<div class="page-break"></div>
+
+<!-- SECTION 12: QUICK REFERENCE -->
+<h1>12. Quick Reference: Function Signatures</h1>
+
+<h2>🔐 Authentication Functions</h2>
+<table class="structure-table">
+    <tr>
+        <th>Function Name</th>
+        <th>Parameters</th>
+        <th>Returns</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>handleLogin()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Validate & authenticate user</td>
+    </tr>
+    <tr>
+        <td>handleSignup()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Register new user (with validation)</td>
+    </tr>
+    <tr>
+        <td>handleLogout()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Clear login state & reset UI</td>
+    </tr>
+    <tr>
+        <td>renderAuthUI()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Update navbar login/avatar display</td>
+    </tr>
+</table>
+
+<h2>📋 Navigation Functions</h2>
+<table class="structure-table">
+    <tr>
+        <th>Function Name</th>
+        <th>Parameters</th>
+        <th>Returns</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>hideAllPages()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Add 'hidden' class to all pages</td>
+    </tr>
+    <tr>
+        <td>showHomePage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Remove 'hidden' from home page</td>
+    </tr>
+    <tr>
+        <td>showLoginPages()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Show login form overlay</td>
+    </tr>
+    <tr>
+        <td>showSignupPage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Show signup form overlay</td>
+    </tr>
+    <tr>
+        <td>showToDoPage()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Show to-do list page (check auth)</td>
+    </tr>
+    <tr>
+        <td>showCalendarPage()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Show calendar page (check auth)</td>
+    </tr>
+</table>
+
+<h2>✅ To-Do List Functions</h2>
+<table class="structure-table">
+    <tr>
+        <th>Function Name</th>
+        <th>Parameters</th>
+        <th>Returns</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>handleAddTodo()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Validate & add new task</td>
+    </tr>
+    <tr>
+        <td>renderTodoList()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Render filtered tasks to DOM</td>
+    </tr>
+    <tr>
+        <td>createTodoItemHTML()</td>
+        <td>task object</td>
+        <td>string</td>
+        <td>Generate HTML for single task</td>
+    </tr>
+    <tr>
+        <td>handleCheckboxChange()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Update task completion status</td>
+    </tr>
+    <tr>
+        <td>handleDeleteTodo()</td>
+        <td>id (number)</td>
+        <td>void</td>
+        <td>Delete task & re-render</td>
+    </tr>
+    <tr>
+        <td>handleFilterClick()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Change filter & re-render</td>
+    </tr>
+    <tr>
+        <td>updateSummary()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Update task counters</td>
+    </tr>
+</table>
+
+<h2>📅 Calendar Functions</h2>
+<table class="structure-table">
+    <tr>
+        <th>Function Name</th>
+        <th>Parameters</th>
+        <th>Returns</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>renderCalendar()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Generate calendar grid & events</td>
+    </tr>
+    <tr>
+        <td>renderEventsList()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Render events for selected date</td>
+    </tr>
+    <tr>
+        <td>handleAddEvent()</td>
+        <td>event</td>
+        <td>void</td>
+        <td>Validate & add new event</td>
+    </tr>
+    <tr>
+        <td>handleDeleteEvent()</td>
+        <td>id (number)</td>
+        <td>void</td>
+        <td>Delete event & re-render</td>
+    </tr>
+    <tr>
+        <td>getEventsForDate()</td>
+        <td>dateString</td>
+        <td>array</td>
+        <td>Get events matching date</td>
+    </tr>
+    <tr>
+        <td>formatDateToString()</td>
+        <td>year, month, day</td>
+        <td>string</td>
+        <td>Convert to YYYY-MM-DD format</td>
+    </tr>
+    <tr>
+        <td>formatMonthYear()</td>
+        <td>date object</td>
+        <td>string</td>
+        <td>Format month-year display</td>
+    </tr>
+</table>
+
+<h2>💾 Storage Functions</h2>
+<table class="structure-table">
+    <tr>
+        <th>Function Name</th>
+        <th>Parameters</th>
+        <th>Returns</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>saveTasksToStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Persist tasks to localStorage</td>
+    </tr>
+    <tr>
+        <td>loadTasksFromStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Load tasks from localStorage</td>
+    </tr>
+    <tr>
+        <td>saveEventsToStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Persist events to localStorage</td>
+    </tr>
+    <tr>
+        <td>loadEventsFromStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Load events from localStorage</td>
+    </tr>
+    <tr>
+        <td>saveLoginStateToStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Save login status</td>
+    </tr>
+    <tr>
+        <td>loadLoginStateFromStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Load login status</td>
+    </tr>
+</table>
+
+<h2>🎯 Initialization Functions</h2>
+<table class="structure-table">
+    <tr>
+        <th>Function Name</th>
+        <th>Parameters</th>
+        <th>Returns</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>loadDataFromStorage()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Load all persisted data on startup</td>
+    </tr>
+    <tr>
+        <td>initEventListeners()</td>
+        <td>-</td>
+        <td>void</td>
+        <td>Attach all event listeners</td>
+    </tr>
+</table>
+
+<h2>🔀 Event & Control Flow Diagram</h2>
+<div class="flow-diagram">
+DOMContentLoaded Event
+    │
+    ├─→ loadDataFromStorage()
+    │   ├─→ loadTasksFromStorage()
+    │   ├─→ loadEventsFromStorage()
+    │   └─→ loadLoginStateFromStorage()
+    │
+    ├─→ renderAuthUI()
+    │   └─→ Update navbar (login btn / avatar)
+    │
+    ├─→ initEventListeners()
+    │   ├─→ Attach 20+ event listeners
+    │   ├─→ Forms (login, signup, add todo/event)
+    │   ├─→ Navigation (home, sidebar, modals)
+    │   └─→ Interactions (checkboxes, filters)
+    │
+    └─→ showHomePage()
+        └─→ Initial page displayed based on auth
+</div>
+
+<div class="page-break"></div>
+
+<!-- COMMON ISSUES & SOLUTIONS -->
+<h1>13. Common Issues & Solutions</h1>
+
+<h2>❌ Issue: Form Hidden Behind Navbar</h2>
+<p><strong>Cause:</strong> Form has margin-left: 19rem (sidebar width), but navbar is fixed</p>
+<p><strong>Solution:</strong> Use position: fixed for form + z-index: 200</p>
+<pre>.login-form-container {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 200;
+}</pre>
+
+<h2>❌ Issue: Mobile Layout Breaks</h2>
+<p><strong>Cause:</strong> No media queries; sidebar width too large on mobile</p>
+<p><strong>Solution:</strong> Add breakpoints at 768px & 480px, change sidebar to horizontal</p>
+<pre>@media (max-width: 768px) {
+    .sideBar {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+    }
+}</pre>
+
+<h2>❌ Issue: Event Listeners Not Working on Dynamically Added Elements</h2>
+<p><strong>Cause:</strong> Listeners attached before elements created</p>
+<p><strong>Solution:</strong> Use event delegation or re-attach after rendering</p>
+<pre>// Event delegation approach
+container.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+        handleDelete(e.target.dataset.id);
+    }
+});</pre>
+
+<h2>❌ Issue: Data Not Persisting After Page Refresh</h2>
+<p><strong>Cause:</strong> Forgot to call saveTasksToStorage()</p>
+<p><strong>Solution:</strong> Always save after any data modification</p>
+<pre>function handleAddTodo(e) {
+    // ... create task
+    tasks.push(newTask);
+    saveTasksToStorage();  // ← Don't forget!
+    renderTodoList();
+}</pre>
+
+<h2>❌ Issue: Modal Visible Behind Other Content</h2>
+<p><strong>Cause:</strong> Modal z-index lower than other elements</p>
+<p><strong>Solution:</strong> Set modal z-index higher (300+)</p>
+<pre>.modal {
+    z-index: 300;  /* Above all other overlays */
+}</pre>
+
+<div class="page-break"></div>
+
+<!-- PERFORMANCE TIPS -->
+<h1>14. Performance Tips & Best Practices</h1>
+
+<h2>⚡ Optimization Strategies</h2>
+
+<h3>1. Avoid Unnecessary DOM Manipulation</h3>
+<pre>// ❌ Bad: Re-render everything
+document.getElementById('container').innerHTML = '';
+document.getElementById('container').innerHTML = html1;
+document.getElementById('container').innerHTML = html2;
+
+// ✅ Good: Build string, append once
+let html = html1 + html2;
+document.getElementById('container').innerHTML = html;</pre>
+
+<h3>2. Use Efficient Selectors</h3>
+<pre>// ❌ Slower: Querying all elements
+document.querySelectorAll('div').forEach(el => {
+    if (el.classList.contains('todo-item')) { /* ... */ }
+});
+
+// ✅ Faster: Query specific class
+document.querySelectorAll('.todo-item').forEach(el => {
+    /* ... */
+});</pre>
+
+<h3>3. Debounce Search Input</h3>
+<pre>// ❌ Bad: Renders on every keystroke
+input.addEventListener('input', renderTodoList);
+
+// ✅ Good: Wait 300ms after user stops typing
+let timeout;
+input.addEventListener('input', () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(renderTodoList, 300);
+});</pre>
+
+<h3>4. Cache DOM References</h3>
+<pre>// ❌ Bad: querySelector called multiple times
+function updateUI() {
+    document.getElementById('count').textContent = tasks.length;
+    document.getElementById('count').classList.add('updated');
+}
+
+// ✅ Good: Cache reference
+const countEl = document.getElementById('count');
+function updateUI() {
+    countEl.textContent = tasks.length;
+    countEl.classList.add('updated');
+}</pre>
+
+<h2>📦 Code Organization Tips</h2>
+<ul>
+    <li><strong>Group related functions:</strong> Auth functions together, Calendar functions together</li>
+    <li><strong>Use meaningful names:</strong> handleAddTodo() is clearer than addT()</li>
+    <li><strong>Add comments:</strong> Explain WHY, not WHAT (code already shows WHAT)</li>
+    <li><strong>Keep functions small:</strong> Single responsibility principle</li>
+    <li><strong>Avoid global variables:</strong> Use local scope when possible</li>
+</ul>
+
+<div class="page-break"></div>
+
+<!-- DEPLOYMENT -->
+<h1>15. Deployment & Next Steps</h1>
+
+<h2>🚀 Deploying to Production</h2>
+
+<h3>Option 1: GitHub Pages (FREE)</h3>
+<ol>
+    <li>Create GitHub repository</li>
+    <li>Push index.html, index.css, index.js</li>
+    <li>Go to Settings → Pages</li>
+    <li>Select "main" branch as source</li>
+    <li>Access at https://username.github.io/repo-name/</li>
+</ol>
+
+<h3>Option 2: Netlify (FREE)</h3>
+<ol>
+    <li>Create Netlify account</li>
+    <li>Drag & drop project folder</li>
+    <li>Automatic deployment on file changes</li>
+    <li>Access at generated URL</li>
+</ol>
+
+<h3>Option 3: Vercel (FREE)</h3>
+<ol>
+    <li>Connect GitHub account</li>
+    <li>Import repository</li>
+    <li>Auto-deploys on push</li>
+</ol>
+
+<h2>🔧 Potential Enhancements</h2>
+<ul>
+    <li><strong>Backend Integration:</strong> Replace hardcoded login with real authentication (Node.js, Python)</li>
+    <li><strong>Database:</strong> Use Firebase or MongoDB to store user data</li>
+    <li><strong>PWA:</strong> Add service workers for offline functionality</li>
+    <li><strong>Notifications:</strong> Remind user of upcoming events</li>
+    <li><strong>Dark Mode:</strong> CSS variables + toggle button</li>
+    <li><strong>Export/Import:</strong> Allow exporting data as JSON/CSV</li>
+    <li><strong>Collaborative:</strong> Share tasks/calendar with other users</li>
+    <li><strong>Mobile App:</strong> Convert to React Native or Flutter app</li>
+</ul>
+
+<h2>🎓 Learning Path After MemoryNote</h2>
+<ul>
+    <li><strong>Level 2:</strong> Learn React.js (Component framework)</li>
+    <li><strong>Level 3:</strong> Learn Node.js (Backend server)</li>
+    <li><strong>Level 4:</strong> Learn MongoDB (NoSQL database)</li>
+    <li><strong>Level 5:</strong> Build full-stack MERN app</li>
+    <li><strong>Level 6:</strong> Learn TypeScript (Type safety)</li>
+    <li><strong>Level 7:</strong> Learn advanced patterns (Redux, GraphQL)</li>
+</ul>
+
+<div class="page-break"></div>
+
+<!-- CONCLUSION -->
+<h1>📌 Kết Luận</h1>
+
+<p>MemoryNote là một ứng dụng web hoàn chỉnh được xây dựng bằng HTML, CSS, và JavaScript thuần. Nó minh họa các khái niệm quan trọng như:</p>
+
+<ul>
+    <li>✅ <strong>Semantic HTML:</strong> Cấu trúc ngữ pháp chính xác</li>
+    <li>✅ <strong>Responsive CSS:</strong> Hoạt động trên tất cả thiết bị</li>
+    <li>✅ <strong>DOM Manipulation:</strong> Tương tác JavaScript với HTML</li>
+    <li>✅ <strong>State Management:</strong> Quản lý trạng thái ứng dụng</li>
+    <li>✅ <strong>Persistence:</strong> Lưu dữ liệu với LocalStorage</li>
+    <li>✅ <strong>Event Handling:</strong> Bắt & xử lý sự kiện người dùng</li>
+    <li>✅ <strong>Component Thinking:</strong> Tách code thành components nhỏ</li>
+</ul>
+
+<p>Những kỹ năng học được từ dự án này là nền tảng vững chắc để học các framework hiện đại như React, Vue, hoặc Angular. Bằng cách hiểu sâu vanilla JavaScript, bạn sẽ trở thành lập trình viên frontend tốt hơn.</p>
+
+<h2>📚 Tài Liệu Tham Khảo</h2>
+<ul>
+    <li><strong>MDN Web Docs:</strong> https://developer.mozilla.org/en-US/docs/Web/ (Tài liệu gốc)</li>
+    <li><strong>JavaScript.info:</strong> https://javascript.info/ (Bài hướng dẫn JS chi tiết)</li>
+    <li><strong>CSS Tricks:</strong> https://css-tricks.com/ (Tips CSS hay)</li>
+    <li><strong>Can I Use:</strong> https://caniuse.com/ (Kiểm tra browser support)</li>
+    <li><strong>GitHub Pages:</strong> https://pages.github.com/ (Deploy miễn phí)</li>
+</ul>
+
+<hr style="margin: 3rem 0; border: none; border-top: 2px solid #D37426;">
+
+<p style="text-align: center; margin-top: 3rem; font-size: 1.3rem; color: #666;">
+    <strong>Tạo bởi:</strong> MemoryNote Development Team<br>
+    <strong>Ngày:</strong> 3 tháng 12, 2025<br>
+    <strong>Phiên bản:</strong> 1.0<br>
+    <strong>Giấy phép:</strong> Open Source (MIT)
+</p>
+
+</div>
+</body>
+</html>
